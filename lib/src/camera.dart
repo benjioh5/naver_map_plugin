@@ -73,6 +73,11 @@ class CameraPosition{
 /// 카메라의 동적 움직임을 정의한 클래스입니다.
 /// 현제 위치로 부터의 온전한 움직임을 지원합니다.
 class CameraUpdate{
+  static const reasonLocation = -3;
+  static const reasonControl = -2;
+  static const reasonGesture = -1;
+  static const reasonDeveloper = 0;
+
   final dynamic _json;
 
   CameraUpdate._(this._json);

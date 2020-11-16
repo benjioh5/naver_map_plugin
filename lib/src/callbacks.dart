@@ -15,7 +15,7 @@ typedef void OnMapDoubleTap(LatLng latLng);
 
 typedef void OnMapTwoFingerTap(LatLng latLng);
 
-typedef void OnCameraChange(LatLng latLng);
+typedef void OnCameraChange(int reason, bool animated);
 
 typedef void OnSymbolTap(LatLng position, String caption);
 
