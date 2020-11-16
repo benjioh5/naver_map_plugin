@@ -238,8 +238,10 @@ class NaverMapController: NSObject, FlutterPlatformView, NaverMapOptionSink, NMF
     
     // onCameraChange
     func mapView(_ mapView: NMFMapView, cameraDidChangeByReason reason: Int, animated: Bool) {
-        self.channel?.invokeMethod("camera#move",
-                                        arguments: ["position" : latlngToJson(latlng: mapView.cameraPosition.target)])
+        self.channel?.invokeMethod(
+            "camera#move",
+            arguments: ["reason" : reason, "animated" : animated]
+        )
     }
     
     func mapViewCameraIdle(_ mapView: NMFMapView) {
@@ -261,7 +263,7 @@ class NaverMapController: NSObject, FlutterPlatformView, NaverMapOptionSink, NMF
             sink.setMapType(mapType)
         }
         if let height = option["buildingHeight"] as? Float {
-             sink.setBuildingHeight(height)
+            sink.setBuildingHeight(height)
         }
         if let scale = option["symbolScale"] as? CGFloat {
             sink.setSymbolScale(scale)
@@ -288,7 +290,7 @@ class NaverMapController: NSObject, FlutterPlatformView, NaverMapOptionSink, NMF
             sink.setLocationTrackingMode(locationTrackingMode)
         }
         if let locationButtonEnable = option["locationButtonEnable"] as? Bool{
-           sink.setLocationButtonEnable(locationButtonEnable)
+            sink.setLocationButtonEnable(locationButtonEnable)
         }
     }
     
