@@ -79,10 +79,10 @@ NaverMap.OnMapTwoFingerTapListener,
     }
 
     @Override
-    public void onCameraChange(int i, boolean b) {
+    public void onCameraChange(int reason, boolean animated) {
         final Map<String, Object> arguments = new HashMap<>(2);
-        LatLng latLng = naverMap.getCameraPosition().target;
-        arguments.put("position", Convert.latLngToJson(latLng));
+        arguments.put("reason", reason);
+        arguments.put("animated", animated);
         channel.invokeMethod("camera#move", arguments);
     }
 
