@@ -100,7 +100,7 @@ class NMarkerController: NSObject {
             marker.subCaptionRequestedWidth = subCaptionRequestedWidth
         }
         if let iconData = json["icon"] as? String,
-            let overlayImage = toOverlayImage(assetPath: iconData, registrar: registrar) {
+            let overlayImage = toOverlayImage(assetName: iconData, registrar: registrar) {
             marker.iconImage = overlayImage
         }
         if let infoWindowText = json["infoWindow"] as? String {

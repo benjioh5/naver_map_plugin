@@ -28,8 +28,6 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
               captionText: "커스텀 아이콘 해상도 자동 선택",
               captionColor: Colors.indigo,
               icon: image,
-              width: 45,
-              height: 45,
               infoWindow: '인포 윈도우',
               onMarkerTab: _onMarkerTap));
         });
@@ -46,8 +44,6 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
               captionText: "커스텀 아이콘 해상도 1.0x 고정",
               captionColor: Colors.indigo,
               icon: image,
-              width: 45,
-              height: 45,
               infoWindow: '인포 윈도우',
               onMarkerTab: _onMarkerTap));
         });

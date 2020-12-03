@@ -5,6 +5,8 @@ class OverlayImage {
   final AssetImage image;
   final AssetBundleImageKey key;
 
+  get assetName => Platform.isIOS ? image.assetName : key.name;
+
   const OverlayImage._(this.image, this.key);
 
   /// [assetName] 이미지 중 [configuration]에 맞는 이미지를 찾아 [OverlayImage]객체를 만든다.

@@ -68,13 +68,9 @@ public func pxFromPt(_ pt: CGFloat) -> Int {
     return Int(pt * resolutionFactor)
 }
 
-public func toOverlayImage(assetPath: String, registrar: FlutterPluginRegistrar) -> NMFOverlayImage? {
-    let assetName = registrar.lookupKey(forAsset: assetPath)
-    if let image = UIImage(named: assetName) {
-        return NMFOverlayImage(image: image)
-    }
-    
-    return nil
+public func toOverlayImage(assetName: String, registrar: FlutterPluginRegistrar) -> NMFOverlayImage? {
+    let assetPath = registrar.lookupKey(forAsset: assetName)
+    return NMFOverlayImage(name: assetPath)
 }
 
 // ============================= 객체를 json 으로 =================================
