@@ -106,6 +106,9 @@ class NMarkerController: NSObject {
         if let infoWindowText = json["infoWindow"] as? String {
             self.infoWindowTitle = infoWindowText
         }
+        if let anchor = json["anchor"] as? Array<NSNumber> {
+            marker.anchor = CGPoint(x: anchor[0].doubleValue, y: anchor[1].doubleValue)
+        }
     }
     
     func setMap(_ naverMap: NMFNaverMapView?) {
