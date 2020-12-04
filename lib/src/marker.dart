@@ -163,36 +163,44 @@ class Marker {
   /// 기본값은 DEFAULT_GLOBAL_Z_INDEX입니다
   final int globalZIndex;
 
-  Marker(
-      {@required this.markerId,
-      @required this.position,
-      this.infoWindow,
-      this.alpha,
-      this.flat,
-      this.onMarkerTab,
-      this.icon,
-      this.captionText,
-      this.captionTextSize,
-      this.captionColor,
-      this.captionHaloColor,
-      this.width,
-      this.height,
-      this.maxZoom,
-      this.minZoom,
-      this.angle,
-      this.captionRequestedWidth,
-      this.captionMaxZoom,
-      this.captionMinZoom,
-      this.captionOffset,
-      this.captionPerspectiveEnabled,
-      this.zIndex,
-      this.globalZIndex,
-      this.iconTintColor,
-      this.subCaptionText,
-      this.subCaptionTextSize,
-      this.subCaptionColor,
-      this.subCaptionHaloColor,
-      this.subCaptionRequestedWidth});
+  /// 앵커를 지정합니다. 앵커는 이미지에서 기준이 되는 지점을 의미합니다.
+  ///
+  /// 앵커로 지정된 지점이 정보 창의 좌표에 위치합니다.
+  /// 값의 범위는 (0, 0)~(1, 1)이며, (0, 0)일 경우 이미지의 왼쪽 위, (1, 1)일 경우 이미지의 오른쪽 아래를 의미합니다.
+  final Point<double> anchor;
+
+  Marker({
+    @required this.markerId,
+    @required this.position,
+    this.infoWindow,
+    this.alpha,
+    this.flat,
+    this.onMarkerTab,
+    this.icon,
+    this.captionText,
+    this.captionTextSize,
+    this.captionColor,
+    this.captionHaloColor,
+    this.width,
+    this.height,
+    this.maxZoom,
+    this.minZoom,
+    this.angle,
+    this.captionRequestedWidth,
+    this.captionMaxZoom,
+    this.captionMinZoom,
+    this.captionOffset,
+    this.captionPerspectiveEnabled,
+    this.zIndex,
+    this.globalZIndex,
+    this.iconTintColor,
+    this.subCaptionText,
+    this.subCaptionTextSize,
+    this.subCaptionColor,
+    this.subCaptionHaloColor,
+    this.subCaptionRequestedWidth,
+    this.anchor,
+  });
 
   Map<String, dynamic> _toJson() {
     assert(markerId != null);
@@ -234,6 +242,7 @@ class Marker {
     addIfPresent('subCaptionRequestedWidth', subCaptionRequestedWidth);
     addIfPresent('icon', icon?.assetName);
     addIfPresent('infoWindow', infoWindow);
+    addIfPresent('anchor', anchor == null ? null : [anchor.x, anchor.y]);
 
     return json;
   }
@@ -263,7 +272,8 @@ class Marker {
         subCaptionText == typedOther.subCaptionText &&
         subCaptionTextSize == typedOther.subCaptionTextSize &&
         infoWindow == typedOther.infoWindow &&
-        onMarkerTab == typedOther.onMarkerTab;
+        onMarkerTab == typedOther.onMarkerTab &&
+        anchor == typedOther.anchor;
   }
 
   @override
@@ -301,6 +311,7 @@ class Marker {
       zIndex: zIndex,
       icon: icon,
       infoWindow: infoWindow,
+      anchor: anchor,
     );
   }
 

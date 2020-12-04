@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
@@ -28,6 +29,7 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
               captionText: "커스텀 아이콘 해상도 자동 선택",
               captionColor: Colors.indigo,
               icon: image,
+              anchor: Point(0.5, 0.5),
               infoWindow: '인포 윈도우',
               onMarkerTab: _onMarkerTap));
         });
@@ -40,7 +42,7 @@ class _MarkerMapPageState extends State<MarkerMapPage> {
         setState(() {
           _markers.add(Marker(
               markerId: 'fixed-resolution',
-              position: LatLng(37.561600, 126.966370),
+              position: LatLng(37.563600, 126.962370),
               captionText: "커스텀 아이콘 해상도 1.0x 고정",
               captionColor: Colors.indigo,
               icon: image,
